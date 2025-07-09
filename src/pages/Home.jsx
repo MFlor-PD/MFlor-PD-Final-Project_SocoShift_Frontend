@@ -7,12 +7,19 @@ function Home() {
       <h1>Bienvenidos a SoS</h1>
       <h2>SocoShift Management App</h2>
       <p>App diseñada para generar cuadrantes en entornos dinámicos.</p>
-      <Link to="/cuadrantes">
-        <button>Cuadrantes</button>
+      
+      <Link to="/cuadrantes/config">
+      <button>Cuadrantes</button>
       </Link>
+
       <Link to="/usuarios">
-        <button>Usuarios</button>
+      <button>Usuarios</button>
       </Link>
+
+      <Link to="/cuadrantes/mostrar">
+      <button>Ver Cuadrante</button>
+      </Link>
+
     </div>
   );
 }
