@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import '../css/CalendarioGlobal.css';
 
 function CalendarioGlobal({ cuadranteData, mes }) {
   const [diasDelMes, setDiasDelMes] = useState([]);
@@ -17,7 +18,6 @@ function CalendarioGlobal({ cuadranteData, mes }) {
     setDiasDelMes(dias);
   }, [mes]);
 
-  
   const asignacionesPorDia = {};
   diasDelMes.forEach(dia => {
     asignacionesPorDia[dia] = [];
@@ -32,12 +32,12 @@ function CalendarioGlobal({ cuadranteData, mes }) {
   });
 
   return (
-    <div className="overflow-auto mt-4">
-      <table className="table-auto border-collapse border border-gray-300 w-full text-sm">
+    <div className="roster-container">
+      <table className="roster-table">
         <thead>
           <tr>
             {diasDelMes.map(dia => (
-              <th key={dia} className="border border-gray-300 px-2 py-1 text-center">
+              <th key={dia}>
                 {dia.split('-')[2]} / {dia.split('-')[1]}
               </th>
             ))}
@@ -52,17 +52,17 @@ function CalendarioGlobal({ cuadranteData, mes }) {
               });
 
               return (
-                <td key={dia} className="border border-gray-300 align-top px-2 py-1 max-w-xs">
+                <td key={dia}>
                   {trabajadoresOrdenados.length > 0 ? (
-                    <ul className="list-disc pl-4">
+                    <ul className="trabajadores-list">
                       {trabajadoresOrdenados.map((trab, i) => (
                         <li key={i}>
-                          {trab.nombre} {trab.apellido} - <span className="text-xs text-gray-600">{trab.playa}</span>
+                          {trab.nombre} {trab.apellido} - <span className="playa">{trab.playa}</span>
                         </li>
                       ))}
                     </ul>
                   ) : (
-                    <span className="text-gray-400">-</span>
+                    <span className="sin-trabajador">-</span>
                   )}
                 </td>
               );
