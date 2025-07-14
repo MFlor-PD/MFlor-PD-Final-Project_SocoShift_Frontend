@@ -7,6 +7,7 @@ import ListaUsuarios from '../pages/ListaUsuarios';
 import CuadranteMostrar from '../pages/CuadranteMostrar';
 
 
+
 function AppRoutes() {
   return (
     <Routes>
@@ -16,7 +17,7 @@ function AppRoutes() {
       <Route path="/cuadrantes/config" element={<CuadranteConfig />} />
       <Route path="/usuarios/lista" element={<ListaUsuarios />}/>
       <Route path="/cuadrantes/mostrar" element={<CuadranteMostrar />} />   
-     </Routes>
+      </Routes>
   );
 }
 

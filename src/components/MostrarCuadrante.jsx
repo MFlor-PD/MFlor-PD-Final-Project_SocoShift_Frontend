@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { getCuadranteByMes } from '../services/api';
+import CalendarioGlobal from './CalendarioGlobal';
 
 const MostrarCuadrante = () => {
   const [mes, setMes] = useState('');
-  const [cuadrante, setCuadrante] = useState(null);
+  const [cuadrante, setCuadrante] = useState([]);
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
-    setCuadrante(null);
+    setCuadrante([]);
 
     if (!mes) {
       setError('Por favor selecciona un mes');
@@ -40,13 +41,14 @@ const MostrarCuadrante = () => {
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      {cuadrante && (
-        <pre style={{ whiteSpace: 'pre-wrap', marginTop: '20px' }}>
-          {JSON.stringify(cuadrante, null, 2)}
-        </pre>
+      
+      {cuadrante.length > 0 && mes && (
+        <CalendarioGlobal cuadranteData={cuadrante} mes={mes} />
       )}
+      
     </div>
   );
 };
 
 export default MostrarCuadrante;
+

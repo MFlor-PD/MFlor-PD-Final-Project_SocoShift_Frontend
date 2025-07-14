@@ -4,9 +4,9 @@ import MostrarCuadrante from "../components/MostrarCuadrante";
 function CuadranteMostrar() {
   return (
     <div>
-      <h2>Mostrar Cuadrante</h2>
-      <MostrarCuadrante />
       <Link to="/">Home</Link>
+      <h2>Mostrar Cuadrante</h2>
+      <MostrarCuadrante /> 
     </div>
   );
 }
