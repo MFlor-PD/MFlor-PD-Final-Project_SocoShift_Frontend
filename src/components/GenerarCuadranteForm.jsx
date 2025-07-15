@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { generarCuadrante } from '../services/api'; 
+import '../css/CuadranteGenerarForm.css'
+
 
 function GenerarCuadranteForm() {
   const [mes, setMes] = useState('');
@@ -25,33 +27,34 @@ function GenerarCuadranteForm() {
     }
   };
 
-  return (
-    <>
+return (
+    <div className="generar-cuadrante-container">
       <h2>Generar Cuadrante</h2>
-      <form onSubmit={handleSubmit}>
+
+      <form onSubmit={handleSubmit} className="generar-cuadrante-form">
         <input
           type="month"
           placeholder="YYYY-MM"
           value={mes}
           onChange={e => setMes(e.target.value)}
           required
+          className="generar-cuadrante-input"
         />
-        <button type="submit">Generar Cuadrante</button>
+
+        <button type="submit" className="generar-cuadrante-button">
+          Generar Cuadrante
+        </button>
       </form>
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p className="error-message">{error}</p>}
 
       {resultado && (
-        <pre style={{ whiteSpace: 'pre-wrap', marginTop: '20px' }}>
+        <pre className="resultado-pre">
           {JSON.stringify(resultado, null, 2)}
         </pre>
       )}
-    </>
+    </div>
   );
 }
 
 export default GenerarCuadranteForm;
-
-
-
- 

@@ -1,0 +1,25 @@
+.generar-cuadrante-container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding-top: 1.5rem;       
+  padding-inline: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.generar-cuadrante-container h2 {
+  margin-top: 0;             
+  margin-bottom: 3rem;       
+  font-size: 2.4rem;
+  text-align: center;
+}
+
+.generar-cuadrante-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
