@@ -1,0 +1,58 @@
+.pagina-config-cuadrante {
+  max-width: 480px;
+  margin: 0 auto;
+  padding-top: 3rem; 
+  padding-inline: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+
+.config-cuadrante-form {
+  margin-top: -1rem;
+}
+
+
+.boton-home-superior {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background-color: #A8DADC;
+  color: #2D2D2D;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+}
+
+.boton-home-superior:hover {
+  background-color: #2D3142;
+  color: white;
+}
+
+
+.boton-siguiente-superior {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: #2D3142;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+}
+
+.boton-siguiente-superior:hover {
+  background-color: #D7263D;
+}
+

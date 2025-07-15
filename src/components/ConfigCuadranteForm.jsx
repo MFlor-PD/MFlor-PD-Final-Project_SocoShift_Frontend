@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../css/ConfigCuadranteForm.css';
 
 const ConfigCuadranteForm = () => {
   const [formData, setFormData] = useState({
@@ -57,10 +58,10 @@ const ConfigCuadranteForm = () => {
   };
 
   return (
-    <div>
+    <div className='config-cuadrante-form-container'>
       <h2>Configurar parámetros del Cuadrante</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className='mes'>
           <label>Mes (YYYY-MM):</label><br />
           <input
             type="month"
@@ -70,7 +71,9 @@ const ConfigCuadranteForm = () => {
             required
           />
         </div>
-        <div>
+
+        
+        <div className='horas-diarias'>
           <label>Horas diarias:</label><br />
           <input
             type="number"
@@ -80,8 +83,11 @@ const ConfigCuadranteForm = () => {
             onChange={handleChange}
             required
           />
-        </div>
-        <div>
+          </div>
+        
+
+        
+        <div className='horas-legales'>
           <label>Horas legales al mes:</label><br />
           <input
             type="number"
@@ -91,8 +97,11 @@ const ConfigCuadranteForm = () => {
             onChange={handleChange}
             required
           />
-        </div>
-        <div>
+          </div>
+        
+
+        
+        <div className='socorristas'>
           <label>Socorristas por día:</label><br />
           <input
             type="number"
@@ -101,12 +110,14 @@ const ConfigCuadranteForm = () => {
             onChange={handleChange}
             required
           />
-        </div>
+          </div>
+      
+
         <button type="submit">Guardar configuración</button>
       </form>
 
-      {message && <p style={{ color: 'green' }}>{message}</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {message && <p className="success">{message}</p>}
+      {error && <p className="error">{error}</p>}
 
       {guardado && (
         <button onClick={handleSiguiente} style={{ marginTop: '20px' }}>

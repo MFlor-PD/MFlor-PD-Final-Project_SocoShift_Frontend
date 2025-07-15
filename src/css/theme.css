@@ -1,0 +1,52 @@
+:root {
+  --color-coral: #2D3142;
+  --color-arena: #F6E9D7;
+  --color-gris: #CFCFCF;
+  --color-rojo-alerta: #D7263D;
+  --color-menta: #A8DADC;
+
+  --color-texto-principal: #2D2D2D;
+  --color-fondo: var(--color-arena);
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto-principal);
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  color: var(--color-coral);
+}
+
+button {
+  background-color: var(--color-coral);
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--color-rojo-alerta);
+}
+
+.card {
+  background-color: white;
+  border: 1px solid var(--color-gris);
+  border-radius: 8px;
+  padding: 1em;
+  margin: 1em 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.alerta {
+  background-color: var(--color-rojo-alerta);
+  color: white;
+  padding: 0.5em;
+  border-radius: 4px;
+}

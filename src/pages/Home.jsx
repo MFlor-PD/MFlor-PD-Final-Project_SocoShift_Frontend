@@ -1,9 +1,10 @@
 
 import { Link } from 'react-router-dom';
+import '../css/Home.css';
 
 function Home() {
   return (
-    <div>
+    <div className='home-container'>
       <h1>Bienvenidos a SoS</h1>
       <h2>SocoShift Management App</h2>
       <p>App diseñada para generar cuadrantes en entornos dinámicos.</p>

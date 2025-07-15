@@ -24,10 +24,20 @@ a:hover {
 
 body {
   margin: 0;
+  height: 100vh;
   display: flex;
-  place-items: center;
+  align-items: center;       /* centra verticalmente */
+  justify-content: center;   /* centra horizontalmente */
   min-width: 320px;
-  min-height: 100vh;
+  background-color: #242424;
+}
+
+#root {
+  width: 100%;
+  max-width: 1280px;
+  padding: 2rem;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 h1 {
