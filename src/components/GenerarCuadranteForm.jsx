@@ -1,20 +1,18 @@
 import { useState } from 'react';
 import { generarCuadrante } from '../services/api'; 
-import '../css/CuadranteGenerarForm.css'
-
+import '../css/CuadranteGenerarForm.css';
 
 function GenerarCuadranteForm() {
   const [mes, setMes] = useState('');
   const [resultado, setResultado] = useState(null);
   const [error, setError] = useState(null);
-  //const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async e => {
     e.preventDefault();
     setResultado(null);
     setError(null);
     setLoading(true);
-    const [loadingText, setLoadingText] = useState('Generando cuadrante');
 
     if (!mes) {
       setError('Por favor ingresa un mes');
@@ -28,12 +26,12 @@ function GenerarCuadranteForm() {
     } catch (err) {
       console.error(err);
       setError('Error generando cuadrante: no hay configuración para el mes seleccionado');
-    }finally {
-    setLoading(false);
-  }
+    } finally {
+      setLoading(false);
+    }
   };
 
-return (
+  return (
     <div className="generar-cuadrante-container">
       <h2>Generar Cuadrante</h2>
 
@@ -52,9 +50,9 @@ return (
         </button>
       </form>
 
-      
-      {resultado && !error && <p className="success-message">Cuadrante generado correctamente.</p>}
+      {loading && <div className="spinner"></div>}
 
+      {resultado && !error && <p className="success-message">Cuadrante generado correctamente.</p>}
       {error && <p className="error-message">{error}</p>}
     </div>
   );
