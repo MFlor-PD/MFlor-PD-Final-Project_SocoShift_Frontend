@@ -21,8 +21,8 @@ function GenerarCuadranteForm() {
     }
 
     try {
-      const data = await generarCuadrante({ mes });
-      setResultado(data);
+      const response = await generarCuadrante({ mes });
+      setResultado(response.data);
     } catch (err) {
       console.error(err);
       setError('Error generando cuadrante: no hay configuración para el mes seleccionado');
