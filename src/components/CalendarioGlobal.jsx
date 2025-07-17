@@ -57,7 +57,8 @@ function CalendarioGlobal({ cuadranteData, mes }) {
                     <ul className="trabajadores-list">
                       {trabajadoresOrdenados.map((trab, i) => (
                         <li key={i}>
-                          {trab.nombre} {trab.apellido} - <span className="playa">{trab.playa}</span>
+                          <p className='trabajador'>{trab.nombre} {trab.apellido} {' '}</p>
+                          <span className="playa">{trab.playa}</span>
                         </li>
                       ))}
                     </ul>

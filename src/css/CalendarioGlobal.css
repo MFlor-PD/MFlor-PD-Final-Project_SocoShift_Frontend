@@ -1,13 +1,16 @@
 .roster-container {
-  padding: 1rem;
-  overflow-x: auto;
+  padding: 1rem 0;
+  overflow: auto;
+  max-height: 90vh;
 }
 
 .roster-table {
   width: 100%;
+  min-width: 1000px; 
   border-collapse: collapse;
   font-size: 14px;
 }
+
 
 .roster-table th,
 .roster-table td {
@@ -15,20 +18,27 @@
   padding: 6px 8px;
   text-align: center;
   vertical-align: top;
+  min-width: 100px;      
+  white-space: nowrap;   
 }
 
 .trabajadores-list {
-  list-style-type: disc;
+  list-style-type: none;
   margin: 0;
-  padding-left: 16px;
+  padding-left: 0;
   text-align: left;
+}
+
+.trabajador {
+  font-weight: bold;
 }
 
 .playa {
   font-size: 12px;
-  color: #666;
+  font-weight: normal;
 }
 
 .sin-trabajador {
   color: #aaa;
+  font-size: 14px;
 }

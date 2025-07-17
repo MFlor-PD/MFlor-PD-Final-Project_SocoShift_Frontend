@@ -28,6 +28,7 @@ const MostrarCuadrante = () => {
   };
 
   return (
+    <>
     <div className='mostrar-cuadrante-container'>
       <h2>Mostrar Cuadrante</h2>
       <p>Selecciona un mes para consultar el cuadrante generado.</p>
@@ -44,12 +45,14 @@ const MostrarCuadrante = () => {
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
+      </div>
       
       {cuadrante.length > 0 && mes && (
-        <CalendarioGlobal cuadranteData={cuadrante} mes={mes} />
-      )}
-      
-    </div>
+      <div className='cuadrante-global-wrapper'>
+          <CalendarioGlobal cuadranteData={cuadrante} mes={mes} />
+        </div>
+        )}
+  </>
   );
 };
 
