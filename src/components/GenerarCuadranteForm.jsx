@@ -7,14 +7,18 @@ function GenerarCuadranteForm() {
   const [mes, setMes] = useState('');
   const [resultado, setResultado] = useState(null);
   const [error, setError] = useState(null);
+  //const [loading, setLoading] = useState(false);
 
   const handleSubmit = async e => {
     e.preventDefault();
     setResultado(null);
     setError(null);
+    setLoading(true);
+    const [loadingText, setLoadingText] = useState('Generando cuadrante');
 
     if (!mes) {
       setError('Por favor ingresa un mes');
+      setLoading(false);
       return;
     }
 
@@ -23,8 +27,10 @@ function GenerarCuadranteForm() {
       setResultado(data);
     } catch (err) {
       console.error(err);
-      setError('Error generando cuadrante');
-    }
+      setError('Error generando cuadrante: no hay configuración para el mes seleccionado');
+    }finally {
+    setLoading(false);
+  }
   };
 
 return (
@@ -41,18 +47,15 @@ return (
           className="generar-cuadrante-input"
         />
 
-        <button type="submit" className="generar-cuadrante-button">
-          Generar Cuadrante
+        <button type="submit" className="generar-cuadrante-button" disabled={loading}>
+          {loading ? 'Generando...' : 'Generar Cuadrante'}
         </button>
       </form>
 
-      {error && <p className="error-message">{error}</p>}
+      
+      {resultado && !error && <p className="success-message">Cuadrante generado correctamente.</p>}
 
-      {resultado && (
-        <pre className="resultado-pre">
-          {JSON.stringify(resultado, null, 2)}
-        </pre>
-      )}
+      {error && <p className="error-message">{error}</p>}
     </div>
   );
 }

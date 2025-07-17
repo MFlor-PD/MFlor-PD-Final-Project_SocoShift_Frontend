@@ -7,6 +7,7 @@ const MostrarCuadrante = () => {
   const [mes, setMes] = useState('');
   const [cuadrante, setCuadrante] = useState([]);
   const [error, setError] = useState(null);
+  const [advertencias, setAdvertencias] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,15 +21,27 @@ const MostrarCuadrante = () => {
 
     try {
       const response = await getCuadranteByMes(mes);
-      setCuadrante(response.data);
+      setCuadrante(response.data.cuadrante || []);
+      setAdvertencias(response.data.advertencias || []);
     } catch (err) {
-      setError('Error al obtener el cuadrante');
+      setError('Error al obtener el cuadrante: No hay suficiente personal');
       console.error(err);
     }
   };
 
   return (
     <>
+    {/*advertencias.length > 0 && (
+  <div className="advertencias">
+    <h4>⚠️ Advertencias:</h4>
+    <ul>
+      {advertencias.map((msg, i) => (
+        <li key={i}>{msg}</li>
+      ))}
+    </ul>
+  </div>
+)*/}
+
     <div className='mostrar-cuadrante-container'>
       <h2>Mostrar Cuadrante</h2>
       <p>Selecciona un mes para consultar el cuadrante generado.</p>

@@ -5,7 +5,7 @@ import '../css/CuadranteMostrarPage.css';
 function CuadranteMostrar() {
   return (
     <div className='cuadrante-mostrar-container'>
-
+      <Link to='/cuadrantes/config' className='boton-atras-superior'>Configurar otro cuadrante</Link>
       <Link to="/"><button className='boton-home-superior'>Home</button></Link>
 
       <MostrarCuadrante /> 
