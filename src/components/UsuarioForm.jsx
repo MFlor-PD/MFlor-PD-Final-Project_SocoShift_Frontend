@@ -22,7 +22,12 @@ function UsuarioForm() {
     try {
       await createUsuario(formData);
       alert('Usuario creado correctamente');
-      
+      setFormData({
+        nombre:'',
+        apellido: '',
+        rol: '',
+        playa: '',
+      })
     } catch (error) {
       console.error('Error al crear usuario:', error);
       alert('Ocurrió un error al crear el usuario');

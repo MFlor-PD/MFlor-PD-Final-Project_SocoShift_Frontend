@@ -6,6 +6,13 @@ function UsuarioList() {
   const [usuarios, setUsuarios] = useState([]);
   const [editId, setEditId] = useState(null);
   const [editFormData, setEditFormData] = useState({});
+  const rolesPorColores = {
+  coordinador: 'gray',
+  adjunto: 'orange',
+  patron: 'lightblue',
+  socorrista: 'red',
+  supervisor: 'green'
+};
 
   const fetchUsuarios = async () => {
     try {
@@ -151,7 +158,7 @@ function UsuarioList() {
                   <td className='usuario-nombre'>{u.nombre}</td>
                   <td className='usuario-apellido'>{u.apellido}</td>
                   <td>{u.email || '-'}</td>
-                  <td>{u.rol}</td>
+                  <td style={{ color: rolesPorColores[u.rol?.toLowerCase()] || 'black'}} >{u.rol}</td>
                   <td>{u.playa}</td>
                   <td>{u.dias_obligatorios || '-'}</td>
                   <td>{u.auth || '-'}</td>

@@ -2,20 +2,24 @@ import { useState } from 'react';
 import { getCuadranteByMes } from '../services/api';
 import '../css/MostrarCuadrante.css';
 import CalendarioGlobal from './CalendarioGlobal';
+import { Oval } from 'react-loader-spinner';
 
 const MostrarCuadrante = () => {
   const [mes, setMes] = useState('');
   const [cuadrante, setCuadrante] = useState([]);
   const [error, setError] = useState(null);
-  
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
     setCuadrante([]);
+    setLoading(true)
 
     if (!mes) {
       setError('Por favor selecciona un mes');
+      setLoading(false)
+
       return;
     }
 
@@ -25,6 +29,8 @@ const MostrarCuadrante = () => {
     } catch (err) {
       setError('Error al obtener el cuadrante: No hay suficiente personal');
       console.error(err);
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -47,8 +53,24 @@ const MostrarCuadrante = () => {
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
       </div>
+      {loading && (
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+          <Oval
+            height={40}
+            width={40}
+            color="#4fa94d"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+            ariaLabel='oval-loading'
+            secondaryColor="#4fa94d"
+            strokeWidth={2}
+            strokeWidthSecondary={2}
+          />
+        </div>
+      )}
       
-      {cuadrante.length > 0 && mes && (
+      {cuadrante.length > 0 && mes && !loading && (
       <div className='cuadrante-global-wrapper'>
           <CalendarioGlobal cuadranteData={cuadrante} mes={mes} />
         </div>
