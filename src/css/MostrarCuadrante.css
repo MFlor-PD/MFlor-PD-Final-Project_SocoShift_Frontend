@@ -1,0 +1,93 @@
+.mostrar-cuadrante-container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding-top: 1.5rem;       
+  padding-inline: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+}
+
+
+.mostrar-cuadrante-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.mostrar-cuadrante-form label {
+ padding: 0.5rem;
+}
+
+.mostrar-cuadrante-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #2D3142;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.mostrar-cuadrante-button:hover {
+  background-color: #D7263D;
+}
+
+.mostrar-cuadrante-form input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 300px;
+
+}
+.mostrar-cuadrante-container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding-top: 1.5rem;
+  padding-inline: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.mostrar-cuadrante-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.mostrar-cuadrante-form input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 300px;
+}
+
+.mostrar-cuadrante-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #2D3142;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.mostrar-cuadrante-button:hover {
+  background-color: #D7263D;
+}
+

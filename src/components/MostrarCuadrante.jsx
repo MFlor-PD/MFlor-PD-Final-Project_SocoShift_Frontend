@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { getCuadranteByMes } from '../services/api';
+import '../css/MostrarCuadrante.css';
 import CalendarioGlobal from './CalendarioGlobal';
 
 const MostrarCuadrante = () => {
@@ -27,8 +28,10 @@ const MostrarCuadrante = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className='mostrar-cuadrante-container'>
+      <h2>Mostrar Cuadrante</h2>
+      <p>Selecciona un mes para consultar el cuadrante generado.</p>
+      <form onSubmit={handleSubmit} className="mostrar-cuadrante-form">
         <label>Mes (YYYY-MM):</label><br />
         <input
           type="month"
@@ -36,7 +39,7 @@ const MostrarCuadrante = () => {
           onChange={(e) => setMes(e.target.value)}
           required
         />
-        <button type="submit">Consultar</button>
+        <button type="submit" className="mostrar-cuadrante-button">Consultar</button>
       </form>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}

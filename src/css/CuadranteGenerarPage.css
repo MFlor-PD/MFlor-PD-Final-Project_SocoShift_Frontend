@@ -10,7 +10,7 @@
   position: relative;
 }
 
-/* Posiciones absolutas independientes */
+
 .boton-atras-superior {
   position: fixed;
   top: 1rem;
