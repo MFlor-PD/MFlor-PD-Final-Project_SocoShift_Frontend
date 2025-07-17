@@ -10,6 +10,14 @@
   border-collapse: collapse;
   font-size: 14px;
 }
+.roster-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-fondo);
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 
 
 .roster-table th,

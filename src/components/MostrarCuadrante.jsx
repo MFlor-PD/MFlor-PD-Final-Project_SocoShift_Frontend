@@ -33,7 +33,7 @@ const MostrarCuadrante = () => {
       <h2>Mostrar Cuadrante</h2>
       <p>Selecciona un mes para consultar el cuadrante generado.</p>
       <form onSubmit={handleSubmit} className="mostrar-cuadrante-form">
-        <label>Mes (YYYY-MM):</label><br />
+        <br />
         <input
           type="month"
           value={mes}

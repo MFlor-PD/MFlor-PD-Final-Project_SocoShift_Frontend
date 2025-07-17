@@ -49,9 +49,10 @@
 
 
 .cuadrante-global-wrapper {
-  width: 100vw; 
+  background-color: var(--color-arena); 
+  padding-top: 0em;
+  width: 97vw; 
   margin: 2rem 0;
   max-height: 80vh;
-
+  overflow-y: auto;
 }
-

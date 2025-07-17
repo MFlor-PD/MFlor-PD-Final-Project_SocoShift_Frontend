@@ -26,10 +26,11 @@ body {
   margin: 0;
   height: 100vh;
   display: flex;
-  align-items: center;       /* centra verticalmente */
-  justify-content: center;   /* centra horizontalmente */
+  align-items: center;       
+  justify-content: center;  
   min-width: 320px;
   background-color: #242424;
+  overflow-y: hidden;
 }
 
 #root {
