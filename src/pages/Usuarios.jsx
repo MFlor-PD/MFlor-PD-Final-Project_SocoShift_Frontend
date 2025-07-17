@@ -2,20 +2,17 @@ import { Link } from 'react-router-dom';
 import UsuarioForm from '../components/UsuarioForm';
 
 function Usuarios() {
+
   return (
+
     <>
-      <h2>Crear Usuario</h2>
-      <UsuarioForm />
+        <Link to="/"><button className='boton-home-superior'>Home</button></Link>
 
-      <div style={{ marginTop: '20px' }}>
-        <Link to="/">
-          <button>Home</button>
-        </Link>
+        <UsuarioForm />
 
-        <Link to="/usuarios/lista">
-          <button style={{ marginLeft: '10px' }}>Listar usuarios</button>
-        </Link>
-      </div>
+        <div>
+        <Link to="/usuarios/lista"><button className='boton-ver-cuadrante'>Listar usuarios</button></Link>
+       </div>
     </>
   );
 }

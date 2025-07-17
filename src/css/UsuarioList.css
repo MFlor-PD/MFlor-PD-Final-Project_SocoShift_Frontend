@@ -1,0 +1,79 @@
+.usuario-list {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 75vh;
+  padding: 1rem;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.usuario-list h2 {
+  text-align: center;
+  color: var(--color-coral);
+  margin-bottom: 1rem;
+}
+
+.usuario-list table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.usuario-list th,
+.usuario-list td {
+  padding: 0.75rem;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.usuario-list th {
+  background-color: #f9f9f9;
+  font-weight: 600;
+  color: #555;
+}
+
+.usuario-nombre,
+.usuario-apellido {
+  font-weight: 600;
+  color: #444;
+}
+
+/* Roles por color */
+.usuario-rol {
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+
+.rol-coordinador {
+  background-color: #ffd1d1;
+  color: #a80000;
+}
+
+.rol-adjunto {
+  background-color: #ffecc1;
+  color: #9c7800;
+}
+
+.rol-patron {
+  background-color: #d1ecff;
+  color: #005b94;
+}
+
+.rol-supervisor {
+  background-color: #d8ffd8;
+  color: #017f01;
+}
+
+.rol-socorrista {
+  background-color: #f0f0f0;
+  color: #333;
+}

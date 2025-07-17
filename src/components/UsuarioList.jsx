@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getUsuarios, updateUsuario, deleteUsuario } from '../services/api';
+import '../css/UsuarioList.css';
 
 function UsuarioList() {
   const [usuarios, setUsuarios] = useState([]);
@@ -67,8 +68,8 @@ function UsuarioList() {
   };
 
   return (
-    <div>
-      <h3>Lista de Usuarios</h3>
+    <div className="usuario-list">
+      <h2>Lista de Usuarios</h2>
       <table border="1" cellPadding={6} cellSpacing={0}>
         <thead>
           <tr>
@@ -116,6 +117,7 @@ function UsuarioList() {
                       name="rol"
                       value={editFormData.rol}
                       onChange={handleInputChange}
+                      className={`usuario-rol rol-${editFormData.rol?.toLowerCase()}`}
                     />
                   </td>
                   <td>
@@ -146,8 +148,8 @@ function UsuarioList() {
                 </>
               ) : (
                 <>
-                  <td>{u.nombre}</td>
-                  <td>{u.apellido}</td>
+                  <td className='usuario-nombre'>{u.nombre}</td>
+                  <td className='usuario-apellido'>{u.apellido}</td>
                   <td>{u.email || '-'}</td>
                   <td>{u.rol}</td>
                   <td>{u.playa}</td>

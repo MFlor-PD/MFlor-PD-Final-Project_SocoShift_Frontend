@@ -3,12 +3,8 @@ import UsuarioList from "../components/UsuarioList";
 function ListaUsuarios() {
    return (
     <div>
-      <h2>Lista de Usuarios</h2> 
-        <Link to="/">
-          <button>Home</button>
-        </Link> 
-        <Link to="/usuarios">
-        <button>Atras</button></Link>
+      <Link to="/"><button className="boton-home-superior">Home</button></Link> 
+      <Link to="/usuarios"><button className='boton-atras-superior'>Atras</button></Link>
       <UsuarioList />
     </div>
   );

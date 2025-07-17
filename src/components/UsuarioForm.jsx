@@ -30,8 +30,10 @@ function UsuarioForm() {
   };
 
   return (
+    <div className='config-cuadrante-form-container'>
     <form onSubmit={handleSubmit}>
-      <ul>
+      <h2 >Crear Usuario</h2>
+      <ul className='usuarios-form'>
         <li>
           <label>Nombre:</label>
           <input name="nombre" value={formData.nombre} onChange={handleChange} />
@@ -51,6 +53,7 @@ function UsuarioForm() {
       </ul>
       <button type="submit">Crear Usuario</button>
     </form>
+    </div>
   );
 }
 
