@@ -35,7 +35,7 @@ function UsuarioList() {
       email: usuario.email || '',
       rol: usuario.rol,
       playa: usuario.playa,
-      dias_obligatorios: usuario.dias_obligatorios || '',
+      dias_obligatorios:(usuario.dias_obligatorios || []).join(', '),
       auth: usuario.auth || '',
     });
   };
@@ -51,18 +51,26 @@ function UsuarioList() {
   };
 
   const handleSave = async (id) => {
-    try {
-      await updateUsuario(id, editFormData);
-      setUsuarios((prev) =>
-        prev.map((u) => (u.id === id ? { ...u, ...editFormData } : u))
-      );
-      setEditId(null);
-      setEditFormData({});
-    } catch (error) {
-      console.error('Error al editar usuario:', error);
-      alert('No se pudo actualizar el usuario');
-    }
-  };
+  try {
+    const payload = {
+      ...editFormData,
+      dias_obligatorios: editFormData.dias_obligatorios
+        ? editFormData.dias_obligatorios.split(',').map(d => d.trim())
+        : [],
+    };
+
+    await updateUsuario(id, payload);
+    setUsuarios((prev) =>
+      prev.map((u) => (u.id === id ? { ...u, ...payload } : u))
+    );
+    setEditId(null);
+    setEditFormData({});
+  } catch (error) {
+    console.error('Error al editar usuario:', error);
+    alert('No se pudo actualizar el usuario');
+  }
+};
+
 
   const handleDelete = async (id) => {
     if (!confirm('¿Seguro que deseas eliminar este usuario?')) return;
@@ -139,6 +147,7 @@ function UsuarioList() {
                       name="dias_obligatorios"
                       value={editFormData.dias_obligatorios}
                       onChange={handleInputChange}
+                      placeholder="Ej: lunes, miércoles, viernes"
                     />
                   </td>
                   <td>
