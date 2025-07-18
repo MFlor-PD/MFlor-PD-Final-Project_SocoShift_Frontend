@@ -88,10 +88,10 @@ const MostrarCuadrante = () => {
   try {
     const response = await getCuadranteByMes(mes);
     if (response.data.length === 0) {
-      // Si no hay cuadrante, generamos
+      
       await generarCuadrante({ mes });
     }
-    // Navegamos a la página para mostrar el cuadrante
+    
     navigate('/cuadrantes/generar', { state: { mes } });
   } catch (error) {
     console.error('Error al ver o generar cuadrante:', error);
