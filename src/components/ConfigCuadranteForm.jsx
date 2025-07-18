@@ -1,9 +1,12 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import '../css/ConfigCuadranteForm.css';
 
 const ConfigCuadranteForm = () => {
+  const location = useLocation();
+  const config = location.state?.config;
+
   const [formData, setFormData] = useState({
     mes: '',
     horasDiarias: '',
@@ -11,18 +14,25 @@ const ConfigCuadranteForm = () => {
     socorristasPorDia: '',
   });
 
+  useEffect(() => {
+    if (config) {
+      setFormData({
+        mes: config.mes || '',
+        horasDiarias: config.horas_diarias?.toString() || '',
+        horasLegalesMes: config.horas_legales_mes?.toString() || '',
+        socorristasPorDia: config.socorristas_por_dia?.toString() || '',
+      });
+    }
+  }, [config]);
+
   const [message, setMessage] = useState(null);
   const [error, setError] = useState(null);
   const [guardado, setGuardado] = useState(false);
-
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -71,8 +81,6 @@ const ConfigCuadranteForm = () => {
             required
           />
         </div>
-
-        
         <div className='horas-diarias'>
           <label>Horas diarias:</label><br />
           <input
@@ -83,10 +91,7 @@ const ConfigCuadranteForm = () => {
             onChange={handleChange}
             required
           />
-          </div>
-        
-
-        
+        </div>
         <div className='horas-legales'>
           <label>Horas legales al mes:</label><br />
           <input
@@ -97,10 +102,7 @@ const ConfigCuadranteForm = () => {
             onChange={handleChange}
             required
           />
-          </div>
-        
-
-        
+        </div>
         <div className='socorristas'>
           <label>Socorristas por día:</label><br />
           <input
@@ -110,8 +112,7 @@ const ConfigCuadranteForm = () => {
             onChange={handleChange}
             required
           />
-          </div>
-      
+        </div>
 
         <button type="submit">Guardar configuración</button>
       </form>
@@ -129,6 +130,3 @@ const ConfigCuadranteForm = () => {
 };
 
 export default ConfigCuadranteForm;
-
-
-

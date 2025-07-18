@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { generarCuadrante } from '../services/api'; 
 import '../css/CuadranteGenerarForm.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+
 
 function GenerarCuadranteForm() {
   const [mes, setMes] = useState('');
@@ -9,6 +10,14 @@ function GenerarCuadranteForm() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const mesSeleccionado= location.state?.mes || '';
+
+  useEffect(() => {
+    if (mesSeleccionado) {
+      setMes(mesSeleccionado);
+    }
+  }, [mesSeleccionado]);
 
   const handleSubmit = async e => {
     e.preventDefault();

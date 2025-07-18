@@ -17,6 +17,11 @@ export const generarCuadrante = (data) => API.post('/cuadrante/generar', data);
 export const editarAsignaciones = (data) => API.put('/cuadrante/editar', data);
 export const eliminarAsignaciones = (data) => API.delete('/cuadrante/eliminar', { data });
 
-export const getConfiguracionPorMes = (mes) => API.get('/configuracion-cuadrante', { params: { mes } });
+export const getConfiguracionPorMes = (mes) => {
+  if (!mes) {
+    return API.get('/configuracion-cuadrante'); // sin query para traer todas
+  }
+  return API.get('/configuracion-cuadrante', { params: { mes } });
+};
 export const updateConfiguracionCuadrante = (data) => API.put('/configuracion-cuadrante', data);
 export const deleteConfiguracionCuadrante = (mes) => API.delete(`/configuracion-cuadrante/${mes}`);
