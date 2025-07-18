@@ -1,45 +1,57 @@
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import { getCuadranteByMes } from '../services/api';
 import '../css/MostrarCuadrante.css';
 import CalendarioGlobal from './CalendarioGlobal';
 import { Oval } from 'react-loader-spinner';
+import { useLocation } from 'react-router-dom';
 
 const MostrarCuadrante = () => {
-  const [mes, setMes] = useState('');
+    const location = useLocation();
+  const mesInicial = location.state?.mes || '';
+
+  const [mes, setMes] = useState(mesInicial);
   const [cuadrante, setCuadrante] = useState([]);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const fetchCuadrante = async (mesAConsultar) => {
     setError(null);
     setCuadrante([]);
-    setLoading(true)
-
-    if (!mes) {
-      setError('Por favor selecciona un mes');
-      setLoading(false)
-
-      return;
-    }
+    setLoading(true);
 
     try {
-      const response = await getCuadranteByMes(mes);
+      const response = await getCuadranteByMes(mesAConsultar);
       if (response.data.length === 0) {
-        setError('El mes seleccionado no esta configurado. configure primero y luego genere el cuadrante para poder visualizarlo')
-        return;
+        setError('No hay cuadrante generado para este mes.');
+      } else {
+        setCuadrante(response.data);
       }
-      setCuadrante(response.data);
     } catch (err) {
-      setError('Error al obtener el cuadrante: No hay suficiente personal');
       console.error(err);
+      setError('Error al obtener el cuadrante.');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   };
 
-  return (
-    <>
+  // 2. Si viene con mes predefinido, cargarlo automáticamente
+  useEffect(() => {
+    if (mesInicial) {
+      fetchCuadrante(mesInicial);
+    }
+  }, [mesInicial]);
+
+  // 3. Consulta manual
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!mes) {
+      setError('Selecciona un mes');
+      return;
+    }
+    fetchCuadrante(mes);
+  };
+      return (
+        <>
     <div className='mostrar-cuadrante-container'>
       <h2>Mostrar Cuadrante</h2>
       <p>Selecciona un mes para consultar el cuadrante generado.</p>

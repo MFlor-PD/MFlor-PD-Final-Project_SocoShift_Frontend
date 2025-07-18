@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { generarCuadrante } from '../services/api'; 
 import '../css/CuadranteGenerarForm.css';
+import { useNavigate } from 'react-router-dom';
 
 function GenerarCuadranteForm() {
   const [mes, setMes] = useState('');
   const [resultado, setResultado] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -30,8 +32,12 @@ function GenerarCuadranteForm() {
       setLoading(false);
     }
   };
+    
+    const handleMostrarCuadrante = () => {
+    navigate('/cuadrantes/mostrar', { state: { mes } });
 
-  return (
+  };
+ return (
     <div className="generar-cuadrante-container">
       <h2>Generar Cuadrante</h2>
 
@@ -52,10 +58,23 @@ function GenerarCuadranteForm() {
 
       {loading && <div className="spinner"></div>}
 
-      {resultado && !error && <p className="success-message">Cuadrante generado correctamente.</p>}
+      {resultado && !error && (
+        <>
+          <p className="success-message">Cuadrante generado correctamente.</p>
+          <button
+            onClick={handleMostrarCuadrante}
+            className="generar-cuadrante-button"
+            style={{ marginTop: '10px' }}
+          >
+            Mostrar Cuadrante
+          </button>
+        </>
+      )}
+
       {error && <p className="error-message">{error}</p>}
     </div>
   );
 }
+
 
 export default GenerarCuadranteForm;
