@@ -25,6 +25,10 @@ const MostrarCuadrante = () => {
 
     try {
       const response = await getCuadranteByMes(mes);
+      if (response.data.length === 0) {
+        setError('El mes seleccionado no esta configurado. configure primero y luego genere el cuadrante para poder visualizarlo')
+        return;
+      }
       setCuadrante(response.data);
     } catch (err) {
       setError('Error al obtener el cuadrante: No hay suficiente personal');
