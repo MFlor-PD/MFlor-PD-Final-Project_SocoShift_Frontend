@@ -119,10 +119,10 @@ const MostrarCuadrante = () => {
   {configuraciones.length === 0 ? (
     <p>No hay configuraciones guardadas</p>
   ) : (
-    <ul>
+    <ul className='configuraciones-disponibles'>
       {configuraciones.map(cfg => (
         <li key={cfg.mes} className="configuracion-item">
-          <strong>{cfg.mes}</strong> | Horas/día: {cfg.horas_diarias} | Horas/mes: {cfg.horas_legales_mes} | Socorristas/día: {cfg.socorristas_por_dia}
+          <strong>{cfg.mes}</strong> 
           <div className="acciones-config">
             <button onClick={() =>handleVerCuadrante(cfg.mes)}>Ver</button>
             <button onClick={() => navigate('/cuadrantes/config', { state: { config: cfg } })}>Editar</button>

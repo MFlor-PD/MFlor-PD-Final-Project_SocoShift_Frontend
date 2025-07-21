@@ -56,3 +56,42 @@
   max-height: 80vh;
   overflow-y: auto;
 }
+
+.configuraciones-disponibles {
+ 
+  padding-left: 20px;
+}
+
+.configuracion-item {
+  display: flex;
+  align-items: center;
+  gap: 12px; 
+  margin-bottom: 10px;
+}
+
+.configuracion-item strong {
+  min-width: 80px; 
+}
+
+.acciones-config {
+  display: flex;
+  gap: 8px;
+}
+
+.configuracion-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  padding-left: 28px; 
+  position: relative; 
+}
+
+.configuracion-item::before {
+  content: "🛟";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+}
