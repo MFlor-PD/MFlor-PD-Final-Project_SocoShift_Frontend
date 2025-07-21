@@ -7,7 +7,7 @@ function Home() {
     <div className='home-container'>
       <h1>Bienvenidos a SoS</h1>
       <h2>SocoShift Management App</h2>
-      <p>App diseñada para generar cuadrantes en entornos dinámicos.</p>
+      <p>App diseñada para generar cuadrantes mensuales de trabajo.</p>
       
       <Link to="/cuadrantes/config">
       <button>Cuadrantes</button>
