@@ -26,10 +26,14 @@ src/
 │   ├── UsuarioList.jsx          # Lista editable de usuarios con opción a asignar días o eliminar
 │   ├── ConfigurarCuadranteForm.jsx # Formulario para parametrizar mes, horas mínimas, carga diaria y cantidad mínima de socorristas
 │   ├── GenerarCuadrante.jsx    # Genera cuadrante según configuración y usuarios disponibles, muestra mensaje de éxito/error y permite mostrar calendario
-│   ├── MostrarCuadrante.jsx    # Renderiza el calendario visualmente
+│   ├── MostrarCuadrante.jsx    # Renderiza el calendario visualmente, boton para guardar en LS y Boton para mostrarlos
 │   ├── CalendarioGlobal.jsx    # Lógica para convertir JSON en tablas para calendario
+│   └── ListarCuadrantesGuardados.jsx # Renderiza, enlista y muestra los cuadrantes guardados en LS.
 │
 ├── css/                   # Archivos CSS para páginas y componentes
+|
+├── helper/                
+|   └── localStorage.js    # Logica del localStorage
 │
 ├── pages/                 # Páginas principales
 │   ├── Home.jsx
@@ -38,7 +42,7 @@ src/
 │   ├── CuadranteConfig.jsx  # Página de configuración de cuadrante
 │   ├── CuadranteGenerar.jsx # Página para generar cuadrante
 │   ├── CuadranteMostrar.jsx # Página que muestra el calendario
-│
+│   
 ├── routes/                # Lógica de rutas
 │   └── route.jsx
 │
@@ -59,7 +63,7 @@ Desde Usuarios, un botón lleva a la lista de usuarios donde se pueden editar, e
 
 Cuadrante: Lleva al proceso paso a paso para configurar, generar y mostrar el cuadrante.
 
-Ver Cuadrantes: Permite ingresar un mes para consultar y muestra una lista con las configuraciones guardadas, con opciones para ver, editar o eliminar.
+Ver Cuadrantes: Permite ingresar un mes para consultar y muestra una lista con las configuraciones guardadas, con opciones para ver, editar o eliminar. Tambien muestra un boton de enlistar cuadrantes guardados sobre el calendario y te muestra la lista los que se han guardado en el Local Storage.
 
 En la lista de usuarios se muestran los datos de cada uno, si están autorizados para manipular datos sensibles (funcionalidad en desarrollo con JWT), y si tienen días asignados. Se puede editar o eliminar desde la misma lista.
 
@@ -87,8 +91,6 @@ La versión actual es básica debido a la complejidad del proyecto.
 Las rutas de autorización aún están en desarrollo.
 
 Los cuadrantes no tienen persistencia completa debido a la cantidad de datos, solo se guarda la configuración.
-
-Cada vez que se muestra un cuadrante, se genera dinámicamente. Esto debería optimizarse (provisoriamente se podría usar localStorage).
 
 ## 👩‍💻 Autor:
 

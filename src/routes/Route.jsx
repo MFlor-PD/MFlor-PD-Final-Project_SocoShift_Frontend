@@ -5,7 +5,7 @@ import CuadranteConfig from '../pages/CuadranteConfig';
 import CuadranteGenerar from '../pages/CuadranteGenerar';
 import ListaUsuarios from '../pages/ListaUsuarios';
 import CuadranteMostrar from '../pages/CuadranteMostrar';
-import ListarCuadrantesGuardados from '../pages/ListarCuadrantesGuardados';
+import ListarCuadrantesGuardados from '../components/ListarCuadrantesGuardados';
 
 
 

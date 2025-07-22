@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { obtenerCuadrantesLocales, eliminarCuadranteLocal } from '../helper/localStorage';
-import CalendarioGlobal from '../components/CalendarioGlobal';
+import CalendarioGlobal from './CalendarioGlobal';
+import { Link } from 'react-router-dom';
+import '../css/MostrarCuadrante.css'
 
 const ListarCuadrantesGuardados = () => {
   const [cuadrantes, setCuadrantes] = useState([]);
@@ -28,14 +30,16 @@ const ListarCuadrantesGuardados = () => {
   };
 
   return (
-    <div className='listar-cuadrantes-container'>
-      <h2>Cuadrantes guardados en localStorage</h2>
+    <div className='mostrar-cuadrante-container'>
+      <Link to="/cuadrantes/mostrar"><button className='boton-atras-superior'>Atras</button></Link>
+      <Link to="/"><button className="boton-home-superior">Home</button></Link> 
+      <h2>Cuadrantes guardados</h2>
       {cuadrantes.length === 0 ? (
         <p>No hay cuadrantes guardados.</p>
       ) : (
-        <ul className='cuadrantes-guardados-lista'>
+        <ul className='configuraciones-disponibles'>
           {cuadrantes.map(c => (
-            <li key={c.mes}>
+            <li key={c.mes} className="configuracion-item">
               <strong>{c.mes}</strong>
               <button onClick={() => handleVer(c)}>Ver</button>
               <button onClick={() => handleEliminar(c.mes)}>Eliminar</button>
