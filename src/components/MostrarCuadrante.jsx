@@ -4,6 +4,7 @@ import '../css/MostrarCuadrante.css';
 import CalendarioGlobal from './CalendarioGlobal';
 import { Oval } from 'react-loader-spinner';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { guardarCuadranteEnLocal } from '../helper/localStorage';
 
 const MostrarCuadrante = () => {
   
@@ -158,6 +159,13 @@ const MostrarCuadrante = () => {
       
       {cuadrante.length > 0 && mes && !loading && (
       <div className='cuadrante-global-wrapper'>
+        <button
+      onClick={() => guardarCuadranteEnLocal(mes, cuadrante)}
+      className="guardar-cuadrante-button"
+      style={{ marginTop: '10px' }}
+    >
+      Guardar Cuadrante
+    </button>
           <CalendarioGlobal cuadranteData={cuadrante} mes={mes} />
         </div>
         )}
