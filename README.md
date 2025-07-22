@@ -1,3 +1,108 @@
+# 🏖️ SocoShifts Frontend
+
+## 🚀 Introducción  
+Aplicación para generar cuadrantes dinámicos orientados al socorrismo.
+
+---
+
+## ⚡ Inicio rápido
+
+1. Clonar el repositorio y posicionarse en la carpeta del frontend.  
+2. Instalar Vite si no está instalado:  
+   ```bash
+   npm create vite@latest - framwork:react - variante: js + swc 
+3. Instalar dependencia:
+   npm install
+4. Instalar Axios:
+   npm install axios
+5. Correr la app e modo desarrollo:
+   npm run dev
+
+## 📂 Estructura del proyecto:
+
+src/
+├── components/          # Lógica y componentes visuales
+│   ├── UsuarioForm.jsx          # Formulario para crear usuarios (nombre, apellido, rol, playa asignada)
+│   ├── UsuarioList.jsx          # Lista editable de usuarios con opción a asignar días o eliminar
+│   ├── ConfigurarCuadranteForm.jsx # Formulario para parametrizar mes, horas mínimas, carga diaria y cantidad mínima de socorristas
+│   ├── GenerarCuadrante.jsx    # Genera cuadrante según configuración y usuarios disponibles, muestra mensaje de éxito/error y permite mostrar calendario
+│   ├── MostrarCuadrante.jsx    # Renderiza el calendario visualmente
+│   ├── CalendarioGlobal.jsx    # Lógica para convertir JSON en tablas para calendario
+│
+├── css/                   # Archivos CSS para páginas y componentes
+│
+├── pages/                 # Páginas principales
+│   ├── Home.jsx
+│   ├── Usuarios.jsx         # Página con formulario de usuario
+│   ├── ListaUsuarios.jsx    # Página con lista de usuarios
+│   ├── CuadranteConfig.jsx  # Página de configuración de cuadrante
+│   ├── CuadranteGenerar.jsx # Página para generar cuadrante
+│   ├── CuadranteMostrar.jsx # Página que muestra el calendario
+│
+├── routes/                # Lógica de rutas
+│   └── route.jsx
+│
+├── services/              # Servicios y conexión con backend
+│   └── api.js             # Axios configurado para comunicarse con backend
+│
+├── App.jsx
+├── Main.jsx
+
+   
+## 🛠️ Funcionamiento:
+
+La página principal Home muestra un título, breve descripción y tres botones:
+
+Usuarios: Lleva al formulario para crear usuarios.
+
+Desde Usuarios, un botón lleva a la lista de usuarios donde se pueden editar, eliminar o asignar días.
+
+Cuadrante: Lleva al proceso paso a paso para configurar, generar y mostrar el cuadrante.
+
+Ver Cuadrantes: Permite ingresar un mes para consultar y muestra una lista con las configuraciones guardadas, con opciones para ver, editar o eliminar.
+
+En la lista de usuarios se muestran los datos de cada uno, si están autorizados para manipular datos sensibles (funcionalidad en desarrollo con JWT), y si tienen días asignados. Se puede editar o eliminar desde la misma lista.
+
+El botón Ver Cuadrante desde Home permite consultar el calendario de un mes específico. Muestra las configuraciones guardadas y permite generar o editar el cuadrante.
+
+El botón Cuadrante lleva a la configuración, generación y posterior visualización del cuadrante.
+
+## 🧰 Herramientas utilizadas:
+
+* React
+
+* Vite
+
+* react-router-dom
+
+* react-loader-spinner
+
+* axios
+
+## ⚠️ Nota final:
+
+Esta aplicación es escalable y podría adaptarse a otros rubros.
+La versión actual es básica debido a la complejidad del proyecto.
+
+Las rutas de autorización aún están en desarrollo.
+
+Los cuadrantes no tienen persistencia completa debido a la cantidad de datos, solo se guarda la configuración.
+
+Cada vez que se muestra un cuadrante, se genera dinámicamente. Esto debería optimizarse (provisoriamente se podría usar localStorage).
+
+## 👩‍💻 Autor:
+
+Aplicación construida por Ma. Flor P.D ✨
+
+## 📞 Contacto:
+
+Si querés colaborar o reportar bugs, contactame:
+[mariaflorenciaperezd@gmail.com]
+
+¡Gracias por usar SocoShifts! 🌊🏄‍♂️
+
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
