@@ -24,10 +24,11 @@ src/
 ├── components/          # Lógica y componentes visuales
 │   ├── UsuarioForm.jsx          # Formulario para crear usuarios (nombre, apellido, rol, playa asignada)
 │   ├── UsuarioList.jsx          # Lista editable de usuarios con opción a asignar días o eliminar
-│   ├── ConfigurarCuadranteForm.jsx # Formulario para parametrizar mes, horas mínimas, carga diaria y cantidad mínima de socorristas
-│   ├── GenerarCuadrante.jsx    # Genera cuadrante según configuración y usuarios disponibles, muestra mensaje de éxito/error y permite mostrar calendario
+│   ├── ConfigCuadranteForm.jsx # Formulario para parametrizar mes, horas mínimas, carga diaria y cantidad mínima de socorristas
+│   ├── GenerarCuadranteForm.jsx    # Genera cuadrante según configuración y usuarios disponibles, muestra mensaje de éxito/error y permite mostrar calendario
 │   ├── MostrarCuadrante.jsx    # Renderiza el calendario visualmente, boton para guardar en LS y Boton para mostrarlos
 │   ├── CalendarioGlobal.jsx    # Lógica para convertir JSON en tablas para calendario
+│   ├── ModalConfirmacion.jsx   # Si editas un cuadrante y lo vas a guardar, te visa antes de sobreescribir.  
 │   └── ListarCuadrantesGuardados.jsx # Renderiza, enlista y muestra los cuadrantes guardados en LS.
 │
 ├── css/                   # Archivos CSS para páginas y componentes

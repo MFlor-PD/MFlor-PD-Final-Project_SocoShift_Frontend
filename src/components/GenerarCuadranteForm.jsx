@@ -5,19 +5,15 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 
 function GenerarCuadranteForm() {
-  const [mes, setMes] = useState('');
   const [resultado, setResultado] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const mesSeleccionado= location.state?.mes || '';
+  const [mes, setMes] = useState(location.state?.mes || '');
+  
 
-  useEffect(() => {
-    if (mesSeleccionado) {
-      setMes(mesSeleccionado);
-    }
-  }, [mesSeleccionado]);
+
 
   const handleSubmit = async e => {
     e.preventDefault();

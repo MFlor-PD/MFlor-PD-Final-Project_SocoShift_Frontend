@@ -25,3 +25,9 @@ export const eliminarCuadranteLocal = (mes) => {
   const filtrados = todos.filter(c => c.mes !== mes);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(filtrados));
 };
+
+export const existeCuadranteEnLocal = (mes) => {
+  const cuadrantes = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  return cuadrantes.some(c => c.mes === mes);
+};
+

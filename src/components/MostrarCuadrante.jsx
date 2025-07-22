@@ -4,7 +4,10 @@ import '../css/MostrarCuadrante.css';
 import CalendarioGlobal from './CalendarioGlobal';
 import { Oval } from 'react-loader-spinner';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { guardarCuadranteEnLocal } from '../helper/localStorage';
+import { existeCuadranteEnLocal, guardarCuadranteEnLocal } from '../helper/localStorage';
+import ModalConfirmacion from './ModalConfirmacion';
+
+
 
 const MostrarCuadrante = () => {
   
@@ -16,10 +19,12 @@ const MostrarCuadrante = () => {
   const [loading, setLoading] = useState(false);
   const [configuraciones, setConfiguraciones] = useState([]);
   const navigate = useNavigate();
+  const [mostrarModal, setMostrarModal] = useState(false);
+  const [cuadrantePendiente, setCuadrantePendiente] = useState(null);
 
   const fetchConfiguraciones = async () => {
   try {
-    const response = await getConfiguracionPorMes('');
+    const response = await getConfiguracionPorMes();
     setConfiguraciones(response.data || []);
   } catch (err) {
     console.error(err);
@@ -47,6 +52,7 @@ const MostrarCuadrante = () => {
 
 
   const fetchCuadrante = async (mesAConsultar) => {
+    if (!mesAConsultar) return setError('Selecciona un mes antes de consultar');
     setError(null);
     setCuadrante([]);
     setLoading(true);
@@ -160,13 +166,34 @@ const MostrarCuadrante = () => {
       {cuadrante.length > 0 && mes && !loading && (
       <div className='cuadrante-global-wrapper'>
         <button
-      onClick={() => guardarCuadranteEnLocal(mes, cuadrante)}
-      className="guardar-cuadrante-button"
-      style={{ marginTop: '10px' }}
-    >
-      Guardar Cuadrante
-    </button>
+  onClick={() => {
+    if (existeCuadranteEnLocal(mes)) {
+      setCuadrantePendiente({ mes, datos: cuadrante });
+      setMostrarModal(true);
+    } else {
+      guardarCuadranteEnLocal(mes, cuadrante);
+      alert('Cuadrante guardado');
+    }
+  }}
+  className="guardar-cuadrante-button"
+  style={{ marginTop: '10px' }}>Guardar Cuadrante</button>
           <CalendarioGlobal cuadranteData={cuadrante} mes={mes} />
+
+          {mostrarModal && (
+         <ModalConfirmacion
+         mensaje={`Ya existe un cuadrante guardado para el mes ${cuadrantePendiente.mes}. ¿Deseas reemplazarlo?`}
+         onConfirmar={() => {
+          guardarCuadranteEnLocal(cuadrantePendiente.mes, cuadrantePendiente.datos);
+          setMostrarModal(false);
+          setCuadrantePendiente(null);
+          alert('Cuadrante reemplazado');
+        }}
+         onCancelar={() => {
+          setMostrarModal(false);
+          setCuadrantePendiente(null);
+        }}
+      />
+    )}
         </div>
         )}
   </>

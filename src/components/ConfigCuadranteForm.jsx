@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import axios from 'axios';
+import {updateConfiguracionCuadrante} from '../services/api'
 import '../css/ConfigCuadranteForm.css';
 
 const ConfigCuadranteForm = () => {
   const location = useLocation();
   const config = location.state?.config;
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     mes: '',
@@ -40,6 +41,7 @@ const ConfigCuadranteForm = () => {
     setMessage(null);
     setError(null);
     setGuardado(false);
+    setLoading(true)
 
     if (!formData.mes || !formData.horasDiarias || !formData.horasLegalesMes || !formData.socorristasPorDia) {
       setError('Por favor completa todos los campos');
@@ -54,17 +56,19 @@ const ConfigCuadranteForm = () => {
         socorristas_por_dia: Number(formData.socorristasPorDia),
       };
 
-      await axios.put('http://localhost:3000/configuracion-cuadrante', payload);
+      await updateConfiguracionCuadrante(payload);
       setMessage('Configuración guardada con éxito');
       setGuardado(true);
     } catch (err) {
       console.error(err);
       setError('Error guardando la configuración');
-    }
+    } finally {
+    setLoading(false); 
   };
+}
 
   const handleSiguiente = () => {
-    navigate('/cuadrantes/generar');
+    navigate('/cuadrantes/generar', { state: { mes: formData.mes } });
   };
 
   return (
@@ -113,8 +117,9 @@ const ConfigCuadranteForm = () => {
             required
           />
         </div>
-
-        <button type="submit">Guardar configuración</button>
+          
+          {loading ? ( <div className="spinner"></div>) : (
+          <button type="submit">Guardar configuración</button>)}
       </form>
 
       {message && <p className="success">{message}</p>}
