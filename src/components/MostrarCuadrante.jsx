@@ -21,6 +21,7 @@ const MostrarCuadrante = () => {
   const navigate = useNavigate();
   const [mostrarModal, setMostrarModal] = useState(false);
   const [cuadrantePendiente, setCuadrantePendiente] = useState(null);
+  const [guardado, setGuardado] = useState(false);
 
   const fetchConfiguraciones = async () => {
   try {
@@ -107,13 +108,15 @@ const MostrarCuadrante = () => {
     setLoading(false);
   }
 };
-      return (
-        <>
-    <div className='mostrar-cuadrante-container'>
+return (
+ <>
+   <div className='mostrar-cuadrante-container'>
       <h2>Mostrar Cuadrante</h2>
       <p>Selecciona un mes para consultar el cuadrante generado.</p>
-      <form onSubmit={handleSubmit} className="mostrar-cuadrante-form">
+      
+     <form onSubmit={handleSubmit} className="mostrar-cuadrante-form">
         <br />
+        
         <input
           type="month"
           value={mes}
@@ -121,75 +124,95 @@ const MostrarCuadrante = () => {
           required
         />
         <button type="submit" className="mostrar-cuadrante-button">Consultar</button>
+
         <div className="configuraciones-lista">
-  <h3>Configuraciones disponibles</h3>
-  {configuraciones.length === 0 ? (
-    <p>No hay configuraciones guardadas</p>
-  ) : (
-    <ul className='configuraciones-disponibles'>
-      {configuraciones.map(cfg => (
+        <h3>Configuraciones disponibles</h3>
+
+        {configuraciones.length === 0 ? 
+        (<p>No hay configuraciones guardadas</p>) 
+        : 
+        (
+
+       <ul className='configuraciones-disponibles'>
+        {configuraciones.map(cfg => (
+
         <li key={cfg.mes} className="configuracion-item">
-          <strong>{cfg.mes}</strong> 
-          <div className="acciones-config">
+         <strong>{cfg.mes}</strong> 
+          
+         <div className="acciones-config">
             <button onClick={() =>handleVerCuadrante(cfg.mes)}>Ver</button>
             <button onClick={() => navigate('/cuadrantes/config', { state: { config: cfg } })}>Editar</button>
             <button onClick={() => handleEliminar(cfg.mes)}>Eliminar</button>
-          </div>
-        </li>
-      ))}
-    </ul>
-  )}
-</div>
+         </div>
 
-      </form>
+        </li>
+
+         ))}
+
+        </ul>
+
+        )}
+
+    </div>
+
+    </form>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      </div>
-      {loading && (
+    </div>
+
+      {loading && ( 
+        
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
           <ClipLoader
-      color="#cceeccff"
-      size={40}
-      aria-label="loading"
-      data-testid="loader"
-    />
+            color="#cceeccff"
+            size={40}
+            aria-label="loading"
+            data-testid="loader"
+          />
         </div>
+
       )}
       
       {cuadrante.length > 0 && mes && !loading && (
+      
       <div className='cuadrante-global-wrapper'>
-        <button
-  onClick={() => {
-    if (existeCuadranteEnLocal(mes)) {
-      setCuadrantePendiente({ mes, datos: cuadrante });
-      setMostrarModal(true);
-    } else {
-      guardarCuadranteEnLocal(mes, cuadrante);
-      alert('Cuadrante guardado');
-    }
+        {!guardado && (
+
+        <button onClick={() => {
+          if (existeCuadranteEnLocal(mes)) {
+               setCuadrantePendiente({ mes, datos: cuadrante });
+               setMostrarModal(true);
+        } else {
+               guardarCuadranteEnLocal(mes, cuadrante);
+               setGuardado(true);
+        }
   }}
-  className="guardar-cuadrante-button"
-  style={{ marginTop: '10px' }}>Guardar Cuadrante</button>
-          <CalendarioGlobal cuadranteData={cuadrante} mes={mes} />
+       className="guardar-cuadrante-button" style={{ marginTop: '10px' }}>Guardar Cuadrante</button>
+)}
+       {guardado && <p style={{ color: 'black', marginTop: '10px' }}>Cuadrante guardado con éxito ✅</p>}
+        
+        <CalendarioGlobal cuadranteData={cuadrante} mes={mes} />
 
           {mostrarModal && (
-         <ModalConfirmacion
-         mensaje={`Ya existe un cuadrante guardado para el mes ${cuadrantePendiente.mes}. ¿Deseas reemplazarlo?`}
-         onConfirmar={() => {
-          guardarCuadranteEnLocal(cuadrantePendiente.mes, cuadrantePendiente.datos);
-          setMostrarModal(false);
-          setCuadrantePendiente(null);
-          alert('Cuadrante reemplazado');
+          <ModalConfirmacion
+           mensaje={`Ya existe un cuadrante guardado para el mes ${cuadrantePendiente.mes}. ¿Deseas reemplazarlo?`}
+           
+           onConfirmar={() => {
+              guardarCuadranteEnLocal(cuadrantePendiente.mes, cuadrantePendiente.datos);
+              setMostrarModal(false);
+              setCuadrantePendiente(null);
+              alert('Cuadrante reemplazado');
         }}
-         onCancelar={() => {
-          setMostrarModal(false);
-          setCuadrantePendiente(null);
+           
+           onCancelar={() => {
+              setMostrarModal(false);
+              setCuadrantePendiente(null);
         }}
-      />
-    )}
-        </div>
-        )}
+         />   
+      )}
+      </div>
+      )}
   </>
   );
 };
