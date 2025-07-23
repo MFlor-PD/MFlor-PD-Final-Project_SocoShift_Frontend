@@ -202,6 +202,7 @@ return (
               guardarCuadranteEnLocal(cuadrantePendiente.mes, cuadrantePendiente.datos);
               setMostrarModal(false);
               setCuadrantePendiente(null);
+              setGuardado(true);
               alert('Cuadrante reemplazado');
         }}
            
