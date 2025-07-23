@@ -2,7 +2,7 @@ import { useState, useEffect} from 'react';
 import { getCuadranteByMes, getConfiguracionPorMes, deleteConfiguracionCuadrante, generarCuadrante } from '../services/api';
 import '../css/MostrarCuadrante.css';
 import CalendarioGlobal from './CalendarioGlobal';
-import { Oval } from 'react-loader-spinner';
+import { ClipLoader } from 'react-spinners';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { existeCuadranteEnLocal, guardarCuadranteEnLocal } from '../helper/localStorage';
 import ModalConfirmacion from './ModalConfirmacion';
@@ -148,18 +148,12 @@ const MostrarCuadrante = () => {
       </div>
       {loading && (
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-          <Oval
-            height={40}
-            width={40}
-            color="#cceeccff"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-            ariaLabel='oval-loading'
-            secondaryColor="#093f08ff"
-            strokeWidth={2}
-            strokeWidthSecondary={2}
-          />
+          <ClipLoader
+      color="#cceeccff"
+      size={40}
+      aria-label="loading"
+      data-testid="loader"
+    />
         </div>
       )}
       

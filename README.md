@@ -80,7 +80,7 @@ El botón Cuadrante lleva a la configuración, generación y posterior visualiza
 
 * react-router-dom
 
-* react-loader-spinner
+* react-spinner
 
 * axios
 
