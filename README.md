@@ -91,7 +91,7 @@ La versión actual es básica debido a la complejidad del proyecto.
 
 Las rutas de autorización aún están en desarrollo.
 
-Los cuadrantes no tienen persistencia completa debido a la cantidad de datos, solo se guarda la configuración.
+Los cuadrantes no tienen persistencia completa debido a la cantidad de datos, solo se guarda la configuración. Los cuadrantes quedan guardados en local storage para evitar la peticion al back y la base de datos cada vez, lo cual hace que se enlentezca el calendario.
 
 ## 👩‍💻 Autor:
 
