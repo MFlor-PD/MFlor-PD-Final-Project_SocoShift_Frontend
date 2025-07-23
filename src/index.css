@@ -30,7 +30,7 @@ body {
   justify-content: center;  
   min-width: 320px;
   background-color: #242424;
-  overflow-y: hidden;
+  overflow: auto;
 }
 
 #root {
