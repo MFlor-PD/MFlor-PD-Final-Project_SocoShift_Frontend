@@ -2,6 +2,7 @@
   padding: 1rem 0;
   overflow: auto;
   max-height: 90vh;
+  max-width: 422%;
 }
 
 .roster-table {

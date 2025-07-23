@@ -3,6 +3,7 @@ import { obtenerCuadrantesLocales, eliminarCuadranteLocal } from '../helper/loca
 import CalendarioGlobal from './CalendarioGlobal';
 import { Link } from 'react-router-dom';
 import '../css/MostrarCuadrante.css'
+import '../css/CalendarioGlobal.css'
 
 const ListarCuadrantesGuardados = () => {
   const [cuadrantes, setCuadrantes] = useState([]);
