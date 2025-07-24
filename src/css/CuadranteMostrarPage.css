@@ -19,9 +19,24 @@
 
 .botones-header {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap; /* para que en pantallas chicas bajen */
-  justify-content: center; /* o space-between si quieres extremos */
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
+  gap: 1rem;
   margin-bottom: 1rem;
 }
+
+
+.cuadrante-mostrar-container .boton-atras-superior,
+.cuadrante-mostrar-container .boton-ver-cuadrante,
+.cuadrante-mostrar-container .boton-home-superior {
+  position: static;
+  top: auto;
+  left: auto;
+  right: auto;
+  transform: none;
+  z-index: auto;
+  display: inline-block;
+}
+
+
