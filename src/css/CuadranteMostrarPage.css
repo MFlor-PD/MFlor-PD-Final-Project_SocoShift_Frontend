@@ -26,19 +26,6 @@
   margin-bottom: 1rem;
 }
 
-
-.cuadrante-mostrar-container .boton-atras-superior,
-.cuadrante-mostrar-container .boton-ver-cuadrante,
-.cuadrante-mostrar-container .boton-home-superior {
-  position: static;
-  top: auto;
-  left: auto;
-  right: auto;
-  transform: none;
-  z-index: auto;
-  display: inline-block;
-}
-
 @media (max-width: 480px) {
   .cuadrante-mostrar-container .botones-header {
     flex-direction: column;
@@ -46,9 +33,13 @@
   }
 
   .cuadrante-mostrar-container .botones-header > * {
-    width: 100%;      /* Que cada botón tome todo el ancho */
-    max-width: 300px; /* O un ancho máximo deseado */
+    width: 100%;
+    max-width: 100%; /* Cambiado para no exceder ancho móvil */
+    box-sizing: border-box; /* Incluye padding en el ancho */
     text-align: center;
+
+    white-space: nowrap;      /* Evita que el texto se parta en varias líneas */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Muestra "..." si el texto es muy largo */
   }
 }
-
