@@ -142,3 +142,35 @@ button:hover {
   background-color: rgba(45, 45, 45, 0.5); 
 }
 
+/* Pantallas menores a 768px */
+@media (max-width: 768px) {
+
+  .card {
+    padding: 1em;
+    margin: 1em 0;
+  }
+
+  .boton-home-superior {
+    top: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 0.5em 1em;
+    font-size: 0.9rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+}
+
