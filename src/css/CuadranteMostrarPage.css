@@ -39,4 +39,16 @@
   display: inline-block;
 }
 
+@media (max-width: 480px) {
+  .cuadrante-mostrar-container .botones-header {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .cuadrante-mostrar-container .botones-header > * {
+    width: 100%;      /* Que cada botón tome todo el ancho */
+    max-width: 300px; /* O un ancho máximo deseado */
+    text-align: center;
+  }
+}
 
