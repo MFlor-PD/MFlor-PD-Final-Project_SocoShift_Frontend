@@ -142,7 +142,7 @@ button:hover {
   background-color: rgba(45, 45, 45, 0.5); 
 }
 
-/* Pantallas menores a 768px */
+
 @media (max-width: 768px) {
 
   .card {

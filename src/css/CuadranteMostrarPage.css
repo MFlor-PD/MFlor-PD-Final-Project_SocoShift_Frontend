@@ -16,3 +16,12 @@
   font-size: 2.4rem;
   text-align: center;
 }
+
+.botones-header {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap; /* para que en pantallas chicas bajen */
+  justify-content: center; /* o space-between si quieres extremos */
+  align-items: center;
+  margin-bottom: 1rem;
+}
